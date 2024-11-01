@@ -1,0 +1,11 @@
+{
+    "workbench.colorTheme": "Andromeda Bordered",
+    "workbench.preferredHighContrastLightColorTheme": "Andromeda Bordered",
+    "workbench.activityBar.iconClickBehavior": "focus",
+    "workbench.activityBar.location": "top",
+    "workbench.preferredHighContrastColorTheme": "Andromeda Colorizer",
+    "workbench.preferredDarkColorTheme": "Visual Studio Dark",
+    "cSpell.words": [
+        "Priorite"
+    ]
+}

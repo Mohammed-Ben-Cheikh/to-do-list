@@ -9,12 +9,12 @@
 </head>
 
 <body>
-    <header class="mt-8">
+    <header class="my-8">
         <div class="flex justify-center gap-[10%] items-center  max-sm:gap-1 max-sm:flex-col">
             <button id="Add" type="button"
                 class=" max-sm:order-1  max-sm: w-44 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xl px-5 py-2.5  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none max-sm:py-2 max-sm:text-sm">Add
                 Task +</button>
-            <div class="">
+            <div>
                 <form class=" max-sm:w-80 w-96 mx-auto">
                     <label for="default-search"
                         class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -28,19 +28,19 @@
                         </div>
                         <input type="search" id="default-search"
                             class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Search..." required />
+                            placeholder="Search...">
                         <button type="submit"
                             class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                     </div>
                 </form>
             </div>
-            <button type="button"
+            <button id="Add+" type="button"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xl px-5 py-2.5  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none max-sm:py-2 max-sm:text-sm">Add
                 multiple +</button>
         </div>
-        <!-- forme d'ajout -->
-        <form class=" hidden" id="form">
-            <div id="crud-modal"
+        <!-- forme d'ajout one -->
+        <div class=" modal bg-black bg-opacity-75  items-center justify-center fixed inset-0 z-50  hidden" id="form">
+            <div id="c-modal"
                 class=" overflow-y-auto overflow-x-hidden flex absolute  align-top z-50 justify-center items-center w-full md:inset-0  max-h-full">
                 <div class="relative p-3 w-full max-w-md max-h-full ">
                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -59,14 +59,13 @@
                                 </svg>
                             </button>
                         </div>
-
                         <div class="grid gap-4 mb-4 grid-cols-2">
                             <div class="col-span-2">
                                 <label for="titre"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Titre</label>
                                 <input type="text" name="name" id="titre"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    placeholder="Type Task Title" required="">
+                                    placeholder="Type Task Title">
                             </div>
                             <div class="col-span-2">
                                 <label for="description"
@@ -86,31 +85,28 @@
                                 <input id="date2" type="date"
                                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
-                            <div id="Priorité" class="col-span-2 sm:col-span-1">
-                                <label for="category"
+                            <div class="col-span-2 sm:col-span-1">
+                                <label for="Priorite"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Priorité</label>
-                                <select id="category"
+                                <select id="Priorite"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                    <option selected="">Priorité</option>
-                                    <option value="P2">P1</option>
+                                    <option value="P1">P1</option>
                                     <option value="P2">P2</option>
                                     <option value="P3">P3</option>
                                 </select>
                             </div>
-                            <div id="statut" class="col-span-2 sm:col-span-1">
-                                <label for="category2"
+                            <div class="col-span-2 sm:col-span-1">
+                                <label for="statut"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">statut</label>
-                                <select id="category2"
+                                <select id="statut"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                    <option selected="">statut</option>
-                                    <option value="P2">To do</option>
-                                    <option value="P2">Doing</option>
-                                    <option value="P3">Done</option>
+                                    <option value="todo">To do</option>
+                                    <option value="doing">Doing</option>
+                                    <option value="done">Done</option>
                                 </select>
                             </div>
-
                         </div>
-                        <button id="validerAjoute" type="submit"
+                        <button id="submit" type="submit"
                             class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -123,10 +119,9 @@
                     </div>
                 </div>
             </div>
-        </form>
-        <!-- forme d'ajout -->
+        </div>
+        <!-- forme d'ajout one-->
     </header>
-
     <script src="app.js"></script>
 </body>
 
