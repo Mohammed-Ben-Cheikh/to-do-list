@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.border-g-r {
+    border: 3px solid #f30000;
+    border-left: 10px solid #f30000;
+  }
+  
+  .border-g-o {
+    border: 3px solid #ffa200;
+    border-left: 10px solid #ffa200;
+  }
+  
+  .border-g-v {
+    border: 3px solid #129800;
+    border-left: 10px solid #129800;
+  }
+
+  .border-g {
+    border: 5px solid #000000;
+  }
+
+  .border-g-1 {
+    border: 5px solid #000000;
+    border-right: 0;
+  }
