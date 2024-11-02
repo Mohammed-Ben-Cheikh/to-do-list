@@ -83,7 +83,7 @@ const valid11 = document.getElementById('submit2');
 function addtask2() {
     let taskTitre = document.getElementById("titre2").value;
     let taskDescription = document.getElementById("description2").value;
-    let taskDate = document.getElementById("date2").value;
+    let taskDate = document.getElementById("date3").value;
     let taskDate2 = document.getElementById("date22").value;
     let taskPriorite = document.getElementById("Priorite2").value;
     let taskStatut = document.getElementById("statut2").value;
