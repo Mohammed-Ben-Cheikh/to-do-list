@@ -1,6 +1,3 @@
-
-
-
 //////////////////////////////////////////////////////////////////////////
 let conFor0 = 0;
 let conFor1 = 0;
@@ -51,8 +48,14 @@ const add = document.getElementById("Add");
 const close = document.getElementById("btn_close");
 const form = document.getElementById("form");
 function showForm() {
-
+    document.getElementById('titre').addEventListener('input', function() {
+        if (this.value.length > 60) {
+            alert('La saisie ne peut pas dépasser 60 caractères.');
+            this.value = this.value.slice(0, 60); // Limite la longueur à 10 caractères
+        }
+    });
         form.classList.remove("hidden");
+        document.getElementById("titre").value = '';
     
 }
 function hideForm() {
@@ -67,12 +70,14 @@ const addPlus = document.getElementById("Add+");
 const close3 = document.getElementById("btn_close2");
 const form22 = document.getElementById("form22");
 function showForm2() {
-    let datetime = document.getElementById('datetime').value;
-    if (datetime === '') {
-        alert('cliquer sur le calendrier pour régler la date');
-    } else {
+    document.getElementById('titre2').addEventListener('input', function() {
+        if (this.value.length > 60) {
+            alert('La saisie ne peut pas dépasser 60 caractères.');
+            this.value = this.value.slice(0, 60); // Limite la longueur à 10 caractères
+        }
+    });
         form22.classList.remove("hidden");
-    }
+        document.getElementById("titre2").value = '';
 }
 function hideForm2() {
     form22.classList.add("hidden");
@@ -227,11 +232,11 @@ valid11.addEventListener('click', addtask2);
 function renderTask(task) {
     const newDiv = document.createElement('div');
     if (task.priority === 'P1') {
-        newDiv.className = 'rounded-2xl grid grid-cols-2 w-[87%] h-[80%] bg-white border-g-r m-6 p-4';
+        newDiv.className = 'rounded-2xl grid grid-cols-2 w-[87%] h-[90%] bg-white border-g-r m-6 p-4';
     } else if (task.priority === 'P2') {
-        newDiv.className = 'rounded-2xl grid grid-cols-2 w-[87%] h-[80%] bg-white border-g-o m-6 p-4';
+        newDiv.className = 'rounded-2xl grid grid-cols-2 w-[87%] h-[90%] bg-white border-g-o m-6 p-4';
     } else if (task.priority === 'P3') {
-        newDiv.className = 'rounded-2xl grid grid-cols-2 w-[87%] h-[80%] bg-white border-g-v m-6 p-4';
+        newDiv.className = 'rounded-2xl grid grid-cols-2 w-[87%] h-[90%] bg-white border-g-v m-6 p-4';
     }
     newDiv.id = task.id;
 
@@ -243,8 +248,8 @@ function renderTask(task) {
     }, 0);
 
     newDiv.innerHTML = `
-        <div class="font-bold col-span-2">Titre : <span class="task-title">${task.title}</span></div>
-        <div class="mb-2 col-span-2 overflow-auto">Description : <div><p class="task-description">${task.description}</p></div></div>
+        <div class="overflow-auto font-bold col-span-2">Titre : <div class="overflow-auto" ><p class="task-title">${task.title}</p></div></div>
+        <div class="mb-2 col-span-2 overflow-auto">Description : <div class="overflow-auto "><p class="task-description">${task.description}</p></div></div>
         <div>Date Start : <p class="task-date">${task.dateStart}</p></div>
         <div>Date End : <p class="task-date2">${task.dateEnd}</p></div>
         <div>Priorité : <span class="task-priorite">${task.priority}</span></div>
