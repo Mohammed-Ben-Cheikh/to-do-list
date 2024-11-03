@@ -235,12 +235,7 @@ function renderTask(task) {
     }
     newDiv.id = task.id;
 
-    // Animation de fade-in
-    newDiv.style.opacity = 0;
-    setTimeout(() => {
-        newDiv.style.transition = 'opacity 0.5s';
-        newDiv.style.opacity = 1;
-    }, 0);
+
 
     newDiv.innerHTML = `
         <div class="font-bold col-span-2">Titre : <span class="task-title">${task.title}</span></div>
