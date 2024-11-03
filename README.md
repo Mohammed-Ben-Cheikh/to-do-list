@@ -2,7 +2,7 @@
 
 ## ** Site Web : https://mohammed-ben-cheikh.github.io/to-do-list
 ## ** GitHub : https://github.com/Mohammed-Ben-Cheikh/to-do-list
-## ** Design Canva : https://www.canva.com/design/DAGVdch3WHs/R6mWw7jdqgHzRaJvUXRX6Q/edit?utm_content=DAGVdch3WHs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+## ** Presentation de projet : https://www.canva.com/design/DAGVdch3WHs/R6mWw7jdqgHzRaJvUXRX6Q/edit?utm_content=DAGVdch3WHs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 ## **Nom du projet** : taskflow
 
 ## Description
