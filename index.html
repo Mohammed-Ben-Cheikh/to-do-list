@@ -10,13 +10,19 @@
 </head>
 
 <body>
-    <header class="my-8">
-        <div class="flex justify-center gap-[10%] items-center  max-sm:gap-1 max-sm:flex-col">
+    <header class="my-8 mt-4">
+        <div class="m-5 mt-0 flex items-center gap-5 flex-wrap">
+            <label for="datetime">La date d'aujourd'hui est :</label>
+            <input
+                class="w-36 block p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                id="datetime" type="text">
+        </div>
+        <div class="mt-6 flex justify-center gap-[10%] items-center  max-sm:gap-1 max-sm:flex-col">
             <button id="Add" type="button"
                 class=" border-g max-sm:order-1  max-sm: w-44 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xl px-5 py-2.5  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none max-sm:py-2 max-sm:text-sm">Add
                 Task +</button>
             <div class="">
-                <form class=" max-sm:w-80 w-96 mx-auto">
+                <div class="max-sm:w-80 w-96 mx-auto">
                     <label for="default-search"
                         class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                     <div class="relative">
@@ -27,20 +33,21 @@
                                     stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>
                         </div>
-                        <input type="search" id="default-search"
+                        <input type="search" id="default-search" 
                             class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Search...">
-                        <button type="submit"
+                        <button id="search" type="reset"
                             class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                     </div>
-                </form>
+                </div>
             </div>
             <button id="Add+" type="button"
                 class="border-g  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xl px-5 py-2.5  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none max-sm:py-2 max-sm:text-sm">Add
                 multiple +</button>
         </div>
         <!-- forme d'ajout one -->
-        <div class="border-g modal bg-black bg-opacity-75  items-center justify-center fixed inset-0 z-50  hidden" id="form">
+        <div  class="border-g modal bg-black bg-opacity-75  items-center justify-center fixed inset-0 z-50  hidden"
+            id="form">
             <div id="c-modal"
                 class=" overflow-y-auto overflow-x-hidden flex absolute  align-top z-50 justify-center items-center w-full md:inset-0  max-h-full">
                 <div class="relative p-3 w-full max-w-md max-h-full ">
@@ -64,25 +71,25 @@
                             <div class="col-span-2">
                                 <label for="titre"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Titre</label>
-                                <input type="text" name="name" id="titre"
+                                <input id="titre"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                     placeholder="Type Task Title">
                             </div>
                             <div class="col-span-2">
                                 <label for="description"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                                <textarea id="description" rows="4" cols="50"
-                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Write Task Description">
-                                    </textarea>
+                                <textarea id="description" rows="4" cols="50" placeholder="Write Task Description"
+                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
                             </div>
                             <div>
-                                <label for="date">Date start </label>
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                    for="date">Date start </label>
                                 <input id="date" type="date"
                                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <div>
-                                <label for="date2">Date end </label>
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                    for="date2">Date end </label>
                                 <input id="date2" type="date"
                                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
@@ -107,7 +114,7 @@
                                 </select>
                             </div>
                         </div>
-                        <button id="submit" type="submit"
+                        <button id="submit" type="reset"
                             class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -122,10 +129,11 @@
             </div>
         </div>
         <!-- forme d'ajout one-->
-         <!-- forme d'ajout addplus+ -->
-        <div class="border-g modal bg-black bg-opacity-75  items-center justify-center fixed inset-0 z-50  hidden" id="form22">
-            <div 
-                class=" overflow-y-auto overflow-x-hidden flex absolute  align-top z-50 justify-center items-center w-full md:inset-0  max-h-full">
+        <!-- forme d'ajout addplus+ -->
+        <div class="border-g modal bg-black bg-opacity-75  items-center justify-center fixed inset-0 z-50  hidden"
+            id="form22">
+            <div
+                class="overflow-y-auto overflow-x-hidden flex absolute  align-top z-50 justify-center items-center w-full md:inset-0  max-h-full">
                 <div class=" relative w-full max-w-md max-h-full ">
                     <div class=" border-g p-3 relative bg-white rounded-lg shadow dark:bg-gray-700">
                         <div
@@ -156,16 +164,18 @@
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
                                 <textarea id="description2" rows="4" cols="50"
                                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Write Task Description">
-                                    </textarea>
+                                    placeholder="Write Task Description"></textarea>
+
                             </div>
                             <div>
-                                <label for="date3">Date start </label>
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                    for="date3">Date start </label>
                                 <input id="date3" type="date"
                                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <div>
-                                <label for="date22">Date end </label>
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                    for="date22">Date end </label>
                                 <input id="date22" type="date"
                                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
@@ -190,7 +200,7 @@
                                 </select>
                             </div>
                         </div>
-                        <button id="submit2" type="submit"
+                        <button id="submit2" type="reset"
                             class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -205,12 +215,14 @@
             </div>
         </div>
         <!-- forme d'ajout addplus -->
+        <!-- forme d'edit -->
         <div class="modal bg-black bg-opacity-75 items-center justify-center fixed inset-0 z-50 hidden" id="editForm">
             <div id="edit-modal"
                 class="overflow-y-auto overflow-x-hidden flex absolute align-top z-50 justify-center items-center w-full md:inset-0 max-h-full">
                 <div class="relative p-3 w-full max-w-md max-h-full">
                     <div class="border-g p-3 relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                        <div
+                            class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                             <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
                                 Edit Task
                             </h3>
@@ -240,12 +252,14 @@
                                     placeholder="Edit Task Description"></textarea>
                             </div>
                             <div>
-                                <label for="editDate">Date start </label>
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                    for="editDate">Date start </label>
                                 <input id="editDate" type="date"
                                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <div>
-                                <label for="editDate2">Date end </label>
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                    for="editDate2">Date end </label>
                                 <input id="editDate2" type="date"
                                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
@@ -283,17 +297,15 @@
                     </div>
                 </div>
             </div>
-        </div>
-        
-
+        </div><!-- forme d'edit -->
     </header>
-    <main class="m-[-30px] flex justify-center ">
-        <section class="rounded-2xl border-g flex justify-center flex-wrap w-10/12 gap-6 h-auto py-8 my-8 bg-slate-500">
+    <main id="main" class="mt-[-20px] flex justify-around">
+        <section class="rounded-2xl border-g flex justify-center flex-wrap w-10/12 gap-6 h-auto py-8 my-4 bg-slate-500">
             <div class="rounded-2xl flex justify-start flex-col gap-2 w-96 h-[60vh] bg-blue-700 max-sm:w-[90%]">
                 <div class=" flex justify-start items-center gap-4 rounded-2xl border-g w-full h-[25%]  bg-white ">
                     <h2 class=" ml-7 text-3xl b"><b>To Do</b></h2>
                     <div class="bg-black w-[2px] h-[90%]"></div>
-                    <h2 id="f1" class="text-2xl b">0</h2>
+                    <small id="f1" class="text-2xl b">0</small>
                 </div>
                 <div class="rounded-2xl  bg-[lightblue]  w-full h-[75%] overflow-x-hidden" id="to-do">
 
@@ -303,7 +315,7 @@
                 <div class=" flex justify-start items-center gap-4 rounded-2xl border-g w-full h-[25%]  bg-white ">
                     <h2 class=" ml-7 text-3xl b"><b>Doing</b></h2>
                     <div class="bg-black w-[2px] h-[90%]"></div>
-                    <h2 id="f2" class="text-2xl b">0</h2>
+                    <small id="f2" class="text-2xl b">0</small>
                 </div>
                 <div class="rounded-2xl bg-[lightblue]  w-full h-[75%] overflow-x-hidden" id="do-ing">
 
@@ -313,10 +325,10 @@
                 <div class=" flex justify-start items-center gap-4 rounded-2xl border-g w-full h-[25%]  bg-white ">
                     <h2 class=" ml-7 text-3xl b"><b>Done</b></h2>
                     <div class="bg-black w-[2px] h-[90%]"></div>
-                    <h2 id="f3" class="text-2xl b">0</h2>
+                    <small id="f3" class="text-2xl b">0</small>
                 </div>
                 <div class="rounded-2xl bg-[lightblue] w-full h-[75%] overflow-x-hidden" id="do-ne">
-                    
+
                 </div>
             </div>
         </section>

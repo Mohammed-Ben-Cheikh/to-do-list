@@ -6,23 +6,32 @@
 .border-g-r {
     border: 3px solid #f30000;
     border-left: 10px solid #f30000;
-  }
-  
-  .border-g-o {
+}
+
+.border-g-o {
     border: 3px solid #ffa200;
     border-left: 10px solid #ffa200;
-  }
-  
-  .border-g-v {
+}
+
+.border-g-v {
     border: 3px solid #129800;
     border-left: 10px solid #129800;
-  }
+}
 
-  .border-g {
+.border-g {
     border: 5px solid #000000;
-  }
+}
 
-  .border-g-1 {
+.border-g-1 {
     border: 5px solid #000000;
     border-right: 0;
-  }
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.task {
+    transition: opacity 0.5s ease-in-out;
+}
