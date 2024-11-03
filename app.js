@@ -264,7 +264,43 @@ function renderTask(task) {
     }
 }
 
+//////////////////////////////////////////////////////////////////////////
 
+function loadTasks() {
+    let datetime = new Date().toISOString().slice(0, 10);
+    document.getElementById("datetime").value = datetime;
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    tasks.forEach(task => renderTask(task));
+}
+//////////////////////////////////////////////////////////////////////////
+
+function deleteTask(taskId) {
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    const taskElement = document.getElementById(taskId);
+
+    if (taskElement) {
+        // Animation de fade-out avant suppression
+        taskElement.style.transition = 'opacity 0.5s';
+        taskElement.style.opacity = 0;
+
+        setTimeout(() => {
+            // Retirer l'élément après l'animation
+            taskElement.remove();
+        }, 500);
+    }
+
+    // Mettre à jour les données
+    const task = tasks.find(t => t.id === taskId);
+    if (task) {
+        updateCounters(task.status, -1);
+        updateCounterDisplay();
+        saveCountersToLocalStorage();
+    }
+
+    tasks = tasks.filter(t => t.id !== taskId);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+//////////////////////////////////////////////////////////////////////////
 
 function editTask1(taskId) {
         const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
