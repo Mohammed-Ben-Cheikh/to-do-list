@@ -181,7 +181,43 @@ function addtask2() {
         priority: taskPriorite,
         status: taskStatut
     };
-    
+    if (taskTitre === '' || taskDescription === '' || taskDate === '' || taskDate2 === '') {
+        alert('Veuillez remplir tous les champs.');
+    } else if (taskDate > taskDate2) {
+        alert('La date de début doit être supérieure à la date de fin.');
+    } else if (datetime > taskDate2) {
+        if (taskStatut === 'done') {
+            updateCounters(taskStatut, 1);
+            updateCounterDisplay();
+            saveCountersToLocalStorage();
+
+            let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            tasks.push(newTask);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+
+            renderTask(newTask);
+            document.getElementById("titre2").value = '';
+            document.getElementById("description2").value = '';
+            document.getElementById("date3").value = '';
+            document.getElementById("date22").value = '';
+        } else {
+            alert('La date de fin de la tâche ne peut pas être dans le passé.');
+        }
+    } else {
+        updateCounters(taskStatut, 1);
+        updateCounterDisplay();
+        saveCountersToLocalStorage();
+
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        tasks.push(newTask);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+
+        renderTask(newTask);
+        document.getElementById("titre2").value = '';
+        document.getElementById("description2").value = '';
+        document.getElementById("date3").value = '';
+        document.getElementById("date22").value = '';
+    }
 }
 
 valid11.addEventListener('click', addtask2);
