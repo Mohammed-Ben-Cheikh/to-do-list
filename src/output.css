@@ -714,16 +714,12 @@ video {
   height: 25%;
 }
 
-.h-\[60vh\] {
-  height: 60vh;
+.h-\[65vh\] {
+  height: 65vh;
 }
 
 .h-\[75\%\] {
   height: 75%;
-}
-
-.h-\[80\%\] {
-  height: 80%;
 }
 
 .h-\[90\%\] {
@@ -732,22 +728,6 @@ video {
 
 .h-auto {
   height: auto;
-}
-
-.h-\[100\%\] {
-  height: 100%;
-}
-
-.h-\[70vh\] {
-  height: 70vh;
-}
-
-.h-\[65vh\] {
-  height: 65vh;
-}
-
-.h-\[vh\] {
-  height: vh;
 }
 
 .max-h-full {

@@ -48,15 +48,15 @@ const add = document.getElementById("Add");
 const close = document.getElementById("btn_close");
 const form = document.getElementById("form");
 function showForm() {
-    document.getElementById('titre').addEventListener('input', function() {
+    document.getElementById('titre').addEventListener('input', function () {
         if (this.value.length > 60) {
             alert('La saisie ne peut pas dépasser 60 caractères.');
             this.value = this.value.slice(0, 60); // Limite la longueur à 10 caractères
         }
     });
-        form.classList.remove("hidden");
-        document.getElementById("titre").value = '';
-    
+    form.classList.remove("hidden");
+    document.getElementById("titre").value = '';
+
 }
 function hideForm() {
     form.classList.add("hidden");
@@ -70,14 +70,14 @@ const addPlus = document.getElementById("Add+");
 const close3 = document.getElementById("btn_close2");
 const form22 = document.getElementById("form22");
 function showForm2() {
-    document.getElementById('titre2').addEventListener('input', function() {
+    document.getElementById('titre2').addEventListener('input', function () {
         if (this.value.length > 60) {
             alert('La saisie ne peut pas dépasser 60 caractères.');
             this.value = this.value.slice(0, 60); // Limite la longueur à 10 caractères
         }
     });
-        form22.classList.remove("hidden");
-        document.getElementById("titre2").value = '';
+    form22.classList.remove("hidden");
+    document.getElementById("titre2").value = '';
 }
 function hideForm2() {
     form22.classList.add("hidden");
@@ -283,24 +283,21 @@ function deleteTask(taskId) {
     let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     const taskElement = document.getElementById(taskId);
 
-    if (taskElement) {
-        // Animation de fade-out avant suppression
-        taskElement.style.transition = 'opacity 0.5s';
-        taskElement.style.opacity = 0;
+    // Animation de fade-out avant suppression
+    taskElement.style.transition = 'opacity 0.5s';
+    taskElement.style.opacity = 0;
 
-        setTimeout(() => {
-            // Retirer l'élément après l'animation
-            taskElement.remove();
-        }, 500);
-    }
+    setTimeout(() => {
+        // Retirer l'élément après l'animation
+        taskElement.remove();
+    }, 500);
+
 
     // Mettre à jour les données
     const task = tasks.find(t => t.id === taskId);
-    if (task) {
-        updateCounters(task.status, -1);
-        updateCounterDisplay();
-        saveCountersToLocalStorage();
-    }
+    updateCounters(task.status, -1);
+    updateCounterDisplay();
+    saveCountersToLocalStorage();
 
     tasks = tasks.filter(t => t.id !== taskId);
     localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -308,24 +305,25 @@ function deleteTask(taskId) {
 //////////////////////////////////////////////////////////////////////////
 
 function editTask1(taskId) {
-        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-        const task = tasks.find(t => t.id === taskId);
 
-        if (task) {
-            document.getElementById("editTitre").value = task.title;
-            document.getElementById("editDescription").value = task.description;
-            document.getElementById("editDate").value = task.dateStart;
-            document.getElementById("editDate2").value = task.dateEnd;
-            document.getElementById("editPriorite").value = task.priority;
-            document.getElementById("editStatut").value = task.status;
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    const task = tasks.find(t => t.id === taskId);
 
-            document.getElementById("editForm").classList.remove("hidden");
+    document.getElementById("editTitre").value = task.title;
+    document.getElementById("editDescription").value = task.description;
+    document.getElementById("editDate").value = task.dateStart;
+    document.getElementById("editDate2").value = task.dateEnd;
+    document.getElementById("editPriorite").value = task.priority;
+    document.getElementById("editStatut").value = task.status;
 
-            const valid11 = document.getElementById('editSubmit');
-            valid11.onclick = function () {
-                editTask3(taskId);
-            };
-        }
+    document.getElementById("editForm").classList.remove("hidden");
+
+    const valid11 = document.getElementById('editSubmit');
+    valid11.onclick = function () {
+        editTask3(taskId);
+
+    };
+
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -333,7 +331,10 @@ function editTask1(taskId) {
 function editTask3(taskId) {
     let datetime = new Date().toISOString().slice(0, 10);
     let taskTitre2 = document.getElementById("editTitre").value;
-    let taskDescription2 = document.getElementById("editDescription").value;
+    if (taskTitre2.length > 60) {
+        alert('La saisie ne peut pas dépasser 60 caractères.');
+    }else {
+        let taskDescription2 = document.getElementById("editDescription").value;
     let taskDate1 = document.getElementById("editDate").value;
     let taskDate22 = document.getElementById("editDate2").value;
     let taskPriorite2 = document.getElementById("editPriorite").value;
@@ -402,10 +403,13 @@ function editTask3(taskId) {
             document.getElementById(taskId).remove();
             renderTask(tasks[taskIndex]);
         }
+
         document.getElementById('editForm').classList.add('hidden');
     }
 
 
+    }
+    
 }
 
 //////////////////////////////////////////////////////////////////////////
