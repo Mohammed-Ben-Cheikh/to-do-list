@@ -1,5 +1,10 @@
 # To-Do List
 
+## ** Site Web : https://mohammed-ben-cheikh.github.io/SOS-SERVICES/
+### ** GitHub : https://github.com/Mohammed-Ben-Cheikh/SOS-SERVICES.git
+### ** Design Canva : https://www.canva.com/design/DAGTSnCMsQw/-ojCS6-9TtSs3oTQRJU3aw/edit?utm_content=DAGTSnCMsQw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+### **Nom du projet** : SOS Services
+
 ## Description
 L'application **To-Do List** est une plateforme de gestion de tâches simple et efficace. Elle permet aux utilisateurs d'organiser leurs tâches en fonction de leur statut (à faire, en cours, terminée) et de leur priorité. Cette application est conçue avec une interface intuitive et des fonctionnalités robustes pour répondre aux besoins de gestion de projet personnels ou professionnels.
 
