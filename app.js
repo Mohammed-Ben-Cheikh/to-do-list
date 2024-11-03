@@ -158,3 +158,213 @@ function addtask() {
 
 valid1.addEventListener('click', addtask);
 
+//////////////////////////////////////////////////////////////////////////
+
+const valid11 = document.getElementById('submit2');
+
+function addtask2() {
+    let datetime = new Date().toISOString().slice(0, 10);
+    let taskTitre = document.getElementById("titre2").value;
+    let taskDescription = document.getElementById("description2").value;
+    let taskDate = document.getElementById("date3").value;
+    let taskDate2 = document.getElementById("date22").value;
+    let taskPriorite = document.getElementById("Priorite2").value;
+    let taskStatut = document.getElementById("statut2").value;
+
+    const taskId = `task-${Date.now()}`;
+    const newTask = {
+        id: taskId,
+        title: taskTitre,
+        description: taskDescription,
+        dateStart: taskDate,
+        dateEnd: taskDate2,
+        priority: taskPriorite,
+        status: taskStatut
+    };
+    if (taskTitre === '' || taskDescription === '' || taskDate === '' || taskDate2 === '') {
+        alert('Veuillez remplir tous les champs.');
+    } else if (taskDate > taskDate2) {
+        alert('La date de début doit être supérieure à la date de fin.');
+    } else if (datetime > taskDate2) {
+        if (taskStatut === 'done') {
+            updateCounters(taskStatut, 1);
+            updateCounterDisplay();
+            saveCountersToLocalStorage();
+
+            let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            tasks.push(newTask);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+
+            renderTask(newTask);
+            document.getElementById("titre2").value = '';
+            document.getElementById("description2").value = '';
+            document.getElementById("date3").value = '';
+            document.getElementById("date22").value = '';
+        } else {
+            alert('La date de fin de la tâche ne peut pas être dans le passé.');
+        }
+    } else {
+        updateCounters(taskStatut, 1);
+        updateCounterDisplay();
+        saveCountersToLocalStorage();
+
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        tasks.push(newTask);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+
+        renderTask(newTask);
+        document.getElementById("titre2").value = '';
+        document.getElementById("description2").value = '';
+        document.getElementById("date3").value = '';
+        document.getElementById("date22").value = '';
+    }
+}
+
+valid11.addEventListener('click', addtask2);
+
+//////////////////////////////////////////////////////////////////////////
+
+function renderTask(task) {
+    const newDiv = document.createElement('div');
+    if (task.priority === 'P1') {
+        newDiv.className = 'rounded-2xl grid grid-cols-2 w-[87%] h-[80%] bg-white border-g-r m-6 p-4';
+    } else if (task.priority === 'P2') {
+        newDiv.className = 'rounded-2xl grid grid-cols-2 w-[87%] h-[80%] bg-white border-g-o m-6 p-4';
+    } else if (task.priority === 'P3') {
+        newDiv.className = 'rounded-2xl grid grid-cols-2 w-[87%] h-[80%] bg-white border-g-v m-6 p-4';
+    }
+    newDiv.id = task.id;
+
+    // Animation de fade-in
+    newDiv.style.opacity = 0;
+    setTimeout(() => {
+        newDiv.style.transition = 'opacity 0.5s';
+        newDiv.style.opacity = 1;
+    }, 0);
+
+    newDiv.innerHTML = `
+        <div class="font-bold col-span-2">Titre : <span class="task-title">${task.title}</span></div>
+        <div class="mb-2 col-span-2 overflow-auto">Description : <div><p class="task-description">${task.description}</p></div></div>
+        <div>Date Start : <p class="task-date">${task.dateStart}</p></div>
+        <div>Date End : <p class="task-date2">${task.dateEnd}</p></div>
+        <div>Priorité : <span class="task-priorite">${task.priority}</span></div>
+        <div>Statut : <span class="task-statut">${task.status}</span></div>
+        <div class="flex gap-2 col-span-2">
+            <button class="bg-red-500 hover:bg-red-800 text-white px-2 py-1 rounded" onclick="deleteTask('${task.id}')">Delete</button>
+            <button class="bg-yellow-400 hover:bg-yellow-300 text-black px-2 py-1 rounded" onclick="editTask1('${task.id}')">Edit</button>
+        </div>
+    `;
+
+    if (task.status === 'todo') {
+        document.getElementById('to-do').appendChild(newDiv);
+    } else if (task.status === 'doing') {
+        document.getElementById('do-ing').appendChild(newDiv);
+    } else if (task.status === 'done') {
+        document.getElementById('do-ne').appendChild(newDiv);
+    }
+}
+
+
+
+function editTask1(taskId) {
+        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        const task = tasks.find(t => t.id === taskId);
+
+        if (task) {
+            document.getElementById("editTitre").value = task.title;
+            document.getElementById("editDescription").value = task.description;
+            document.getElementById("editDate").value = task.dateStart;
+            document.getElementById("editDate2").value = task.dateEnd;
+            document.getElementById("editPriorite").value = task.priority;
+            document.getElementById("editStatut").value = task.status;
+
+            document.getElementById("editForm").classList.remove("hidden");
+
+            const valid11 = document.getElementById('editSubmit');
+            valid11.onclick = function () {
+                editTask3(taskId);
+            };
+        }
+}
+
+//////////////////////////////////////////////////////////////////////////
+
+function editTask3(taskId) {
+    let datetime = new Date().toISOString().slice(0, 10);
+    let taskTitre2 = document.getElementById("editTitre").value;
+    let taskDescription2 = document.getElementById("editDescription").value;
+    let taskDate1 = document.getElementById("editDate").value;
+    let taskDate22 = document.getElementById("editDate2").value;
+    let taskPriorite2 = document.getElementById("editPriorite").value;
+    let taskStatut2 = document.getElementById("editStatut").value;
+    if (taskTitre2 === '' || taskDescription2 === '' || taskDate1 === '' || taskDate22 === '') {
+        alert('Veuillez remplir tous les champs.');
+    } else if (taskDate1 > taskDate22) {
+        alert('La date de début doit être supérieure à la date de fin.');
+    } else if (datetime > taskDate22) {
+        if (taskStatut2 === 'done') {
+            let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            const taskIndex = tasks.findIndex(t => t.id === taskId);
+
+            if (taskIndex > -1) {
+                const oldStatus = tasks[taskIndex].status;
+                tasks[taskIndex].title = taskTitre2; // Met à jour le titre
+                tasks[taskIndex].description = taskDescription2; // Met à jour la description
+                tasks[taskIndex].dateStart = taskDate1; // Met à jour la date de début
+                tasks[taskIndex].dateEnd = taskDate22; // Met à jour la date de fin
+                tasks[taskIndex].priority = taskPriorite2; // Met à jour la priorité
+                tasks[taskIndex].status = taskStatut2; // Met à jour le statut
+
+
+                if (oldStatus !== taskStatut2) {
+                    updateCounters(oldStatus, -1);
+                    updateCounters(taskStatut2, 1);
+                }
+
+                updateCounterDisplay();
+                saveCountersToLocalStorage();
+
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+
+                document.getElementById(taskId).remove();
+                renderTask(tasks[taskIndex]);
+            }
+            document.getElementById('editForm').classList.add('hidden');
+        } else {
+            alert('La date de fin de la tâche ne peut pas être dans le passé.');
+        }
+
+    } else {
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        const taskIndex = tasks.findIndex(t => t.id === taskId);
+
+        if (taskIndex > -1) {
+            const oldStatus = tasks[taskIndex].status;
+            tasks[taskIndex].title = taskTitre2; // Met à jour le titre
+            tasks[taskIndex].description = taskDescription2; // Met à jour la description
+            tasks[taskIndex].dateStart = taskDate1; // Met à jour la date de début
+            tasks[taskIndex].dateEnd = taskDate22; // Met à jour la date de fin
+            tasks[taskIndex].priority = taskPriorite2; // Met à jour la priorité
+            tasks[taskIndex].status = taskStatut2; // Met à jour le statut
+
+
+            if (oldStatus !== taskStatut2) {
+                updateCounters(oldStatus, -1);
+                updateCounters(taskStatut2, 1);
+            }
+
+            updateCounterDisplay();
+            saveCountersToLocalStorage();
+
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+
+            document.getElementById(taskId).remove();
+            renderTask(tasks[taskIndex]);
+        }
+        document.getElementById('editForm').classList.add('hidden');
+    }
+
+
+}
+
+//////////////////////////////////////////////////////////////////////////
